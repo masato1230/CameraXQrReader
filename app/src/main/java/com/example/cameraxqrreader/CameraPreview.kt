@@ -15,7 +15,10 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 
 @Composable
-fun CameraPreview(modifier: Modifier = Modifier) {
+fun CameraPreview(
+    modifier: Modifier = Modifier,
+    vararg useCases: UseCase,
+) {
     val lifecycleOwner = LocalLifecycleOwner.current
 
     AndroidView(
@@ -38,6 +41,7 @@ fun CameraPreview(modifier: Modifier = Modifier) {
             context.startCamera(
                 lifecycleOwner = lifecycleOwner,
                 previewUseCase,
+                *useCases,
             )
 
             return@AndroidView previewView
