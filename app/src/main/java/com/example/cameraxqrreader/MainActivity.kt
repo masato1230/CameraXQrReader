@@ -34,6 +34,9 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier.fillMaxSize(),
                             viewModel.qrCodeAnalyzeUseCase,
                         )
+                        viewModel.qrCode.value?.let {
+                            QrCodeOverlay(qrCode = it)
+                        }
                     } else {
                         RequestCameraPermission { isCameraGranted = true }
                     }
